@@ -6,10 +6,8 @@ pipeline {
     agent any
     environment
     {
-        AWS_SDK_LOAD_CONFIG=1
-        environment {     
-            DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')     
-} 
+        
+        DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')     
     }
     stages {
         stage("Execution") {
