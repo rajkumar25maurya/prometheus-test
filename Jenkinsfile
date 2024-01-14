@@ -15,6 +15,7 @@ pipeline {
                 script {
                         
                         sh"""
+                        sh 'echo $registryCredential_PSW | sudo docker login -u $registryCredential_USR --password-stdin'
                         docker build -t promethest-python:v1  .
                         docker tag promethest-python:v1  rajkumar25maurya/promethest-python:v1
                         docker push rajkumar25maurya/promethest-python:v1
