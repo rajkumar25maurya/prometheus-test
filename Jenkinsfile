@@ -15,7 +15,7 @@ pipeline {
                 script {
                         
                         sh"""
-                         'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'   
+                         sh echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin   
                         // docker build -t promethest-python:v1  .
                         // docker tag promethest-python:v1  rajkumar25maurya/promethest-python:v1
                         // docker push rajkumar25maurya/promethest-python:v1
