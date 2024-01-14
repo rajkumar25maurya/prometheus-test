@@ -7,7 +7,7 @@ pipeline {
     environment
     {
         AWS_SDK_LOAD_CONFIG=1
-        registryCredential = 'dockerhub_id'
+        DOCKERHUB_CREDENTIALS= credentials('dockerhub_id')
     }
     stages {
         stage("Execution") {
@@ -15,7 +15,7 @@ pipeline {
                 script {
                         
                         sh"""
-                        sh 'echo $registryCredential_PSW | sudo docker login -u $registryCredential_USR --password-stdin'
+                        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                         docker build -t promethest-python:v1  .
                         docker tag promethest-python:v1  rajkumar25maurya/promethest-python:v1
                         docker push rajkumar25maurya/promethest-python:v1
