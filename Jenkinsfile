@@ -16,7 +16,7 @@ pipeline {
                         docker.build('python:v1')
 
                         // // Push the Docker image to Docker Hub
-                        // docker.image('your-docker-image:tag').push()
+                        docker.image('python:v1').push()
                     }
                 }
             }
