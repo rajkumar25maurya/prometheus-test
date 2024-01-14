@@ -14,7 +14,7 @@ pipeline {
         stage("Execution") {
             steps {
                 script {
-                    if (UPDATE_ACTION == "rebuild_container and deploy") {
+                    if (UPDATE_ACTION == "rebuild_container") {
                         
                         sh"""
                         docker build -t promethest-python:v1  .
