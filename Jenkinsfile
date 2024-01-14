@@ -13,10 +13,10 @@ pipeline {
                     // Login to Docker Hub
                     docker.withRegistry('https://registry.hub.docker.com', dockerHubCredentials) {
                         // Build and tag the Docker image
-                        docker.build('python:v1')
+                        docker.build('rajkumar25maurya/python:v1')
 
                         // // Push the Docker image to Docker Hub
-                        docker.image('python:v1').push()
+                        docker.image('rajkumar25maurya/python:v1').push()
                     }
                 }
             }
