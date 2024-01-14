@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
-RUN sudo apt update -y
-RUN sudo apt install curl wget net-tools -y
-RUN sudo apt install python3-pip -y
+RUN apt update -y
+RUN apt install  apt-utils curl wget net-tools -y
+RUN apt install python3-pip -y
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
