@@ -21,5 +21,16 @@ pipeline {
                 }
             }
         }
+        stage ("Run Docker container on Remote host") {
+            steps {
+                script{
+                    // SSH Into the Remote host and run the docker container
+                    sshagent('docker-host')
+                       sh ssh  docker run -it -d --name python-web -p 8000:8000 -p 8001:8001 rajkumar25maurya/python:v1
+                }
+            }
+
+        }
+       
     }
 }
