@@ -30,8 +30,9 @@ pipeline {
             steps {
                 script{
                     // SSH Into the Remote host and run the docker container
-                    sshagent(credentials: ['SSH_CREDENTIALS']) {
-                        ssh user: 'root', remote: REMOTE_HOST, command: 'docker run -it -d --name python-web -p 8000:8000 -p 8001:8001 rajkumar25maurya/python:v1'
+                    sshagent(['docke-host-key']) {
+                        //  'docker run -it -d --name python-web -p 8000:8000 -p 8001:8001 rajkumar25maurya/python:v1'
+                        sh 'ssh -tt -o StrictHostKeyChecking=no root@172.25.0.50 uptime'
                         }
                 }
             }
