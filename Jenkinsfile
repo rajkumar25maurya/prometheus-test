@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+     environment {
+        SSH_CREDENTIALS = credentials('docker-root-host')
+        REMOTE_HOST = '172.25.0.50'
+    }
+
     stages {
         stage('Build and Push Docker Image') {
             steps {
@@ -25,8 +30,8 @@ pipeline {
             steps {
                 script{
                     // SSH Into the Remote host and run the docker container
-                    sshagent(credentials: ['docker-root-host']) {
-                        ssh user: 'root', remote: 172.25.0.50, command: 'docker run -it -d --name python-web -p 8000:8000 -p 8001:8001 rajkumar25maurya/python:v1'
+                    sshagent(credentials: ['SSH_CREDENTIALS']) {
+                        ssh user: 'root', remote: REMOTE_HOST, command: 'docker run -it -d --name python-web -p 8000:8000 -p 8001:8001 rajkumar25maurya/python:v1'
                         }
                 }
             }
