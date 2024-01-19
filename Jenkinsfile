@@ -1,9 +1,5 @@
 pipeline {
     agent any
-
-     environment {
-        SSH_CREDENTIALS = credentials('docker-root-host')
-        REMOTE_HOST = '172.25.0.50'
     }
 
     stages {
