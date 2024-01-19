@@ -26,7 +26,7 @@ pipeline {
                 script{
                     // SSH Into the Remote host and run the docker container
                     sshagent(credentials: ['docker-host'])
-                       sh ssh  -o StrictHostKeyChecking=no "docker run -it -d --name python-web -p 8000:8000 -p 8001:8001 rajkumar25maurya/python:v1"
+                       sh "ssh -o StrictHostKeyChecking=no docker run -it -d --name python-web -p 8000:8000 -p 8001:8001 rajkumar25maurya/python:v1"
                 }
             }
 
